@@ -4,9 +4,7 @@
   "description": "[![Actions Status](https://github.com/k1ntsugi1/frontend-project-lvl3/workflows/hexlet-check/badge.svg)](https://github.com/k1ntsugi1/frontend-project-lvl3/actions)",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -d",
-    "prod": "webpack -p",
-    "webpack": "webpack",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

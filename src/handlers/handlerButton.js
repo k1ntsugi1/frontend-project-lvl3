@@ -6,16 +6,12 @@ const handlerButton = (watcher, input) => {
   const form = document.querySelector('.rss-form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    Promise.resolve(input.value)
-      .then((content) => {
-        if (watcher.feeds.includes(content)) throw new Error(watcher.i18n.t('urlInAddedResources'));
-        watcher.feeds.push(content);
-        const sheme = watcher.shemes.urlValidationScheme;
-        console.log(watcher.shemes);
-        return sheme.validate({ rssUrl: content }, { abortEarly: true });
-      })
+    const content = input.value;
+    const sheme = watcher.shemes.urlValidationScheme;
+    sheme.validate({ rssUrl: content })
       .then((resultOfValidation) => {
-        console.log(resultOfValidation, 'promise');
+        if (watcher.feeds.includes(resultOfValidation)) throw new Error(watcher.i18n.t('urlInAddedResources'));
+        watcher.feeds.push(resultOfValidation);
         watcher.resultOfValidation.message = watcher.i18n.t('isValid');
         watcher.resultOfValidation.status = true;
       })

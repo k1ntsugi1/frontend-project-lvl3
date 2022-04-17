@@ -27,7 +27,7 @@ const runApp = () => {
         rssUrl: yup.string(state.i18n.t('isNotURL'))
           .required(state.i18n.t('isNotURL'))
           .url(state.i18n.t('isNotURL'))
-          // .trim(state.i18n.t('isNotURL'))
+          .trim(state.i18n.t('isNotURL'))
           .matches(/.rss$/, state.i18n.t('isNotRssURL')),
       }),
     };

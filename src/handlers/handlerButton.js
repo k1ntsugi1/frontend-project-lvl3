@@ -1,30 +1,32 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-param-reassign */
 import _ from 'lodash';
+import validatorForm from '../validators/validatorForm';
 
 const handlerButton = (watcher, input) => {
   const form = document.querySelector('.rss-form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const content = input.value;
-    const sheme = watcher.shemes.urlValidationScheme;
-    sheme.validate({ rssUrl: content })
-      .then((resultOfValidation) => {
+    validatorForm(watcher.i18n, content)
+      .then(({ rssUrl: resultOfValidation }) => {
+        console.log(resultOfValidation);
+        // console.log(watcher.feeds.includes(resultOfValidation), watcher.feeds, 'hello');
         if (watcher.feeds.includes(resultOfValidation)) throw new Error(watcher.i18n.t('urlInAddedResources'));
         watcher.feeds.push(resultOfValidation);
         watcher.resultOfValidation.message = watcher.i18n.t('isValid');
-        watcher.resultOfValidation.status = true;
+        watcher.resultOfValidation.isValid.status = true;
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(JSON.stringify(err, null, 4), 'aaasdfasdf');
         if (_.has(err, 'errors')) {
           const [error] = err.errors;
           watcher.resultOfValidation.message = error;
-          watcher.resultOfValidation.status = false;
+          watcher.resultOfValidation.isValid.status = false;
           return;
         }
-        watcher.resultOfValidation.message = err;
-        watcher.resultOfValidation.status = false;
+        watcher.resultOfValidation.message = err.message;
+        watcher.resultOfValidation.isValid.status = false;
       });
   });
 };

@@ -1,5 +1,4 @@
 import i18next from 'i18next';
-import * as yup from 'yup';
 import languages from './resources/languages.js';
 import app from './app.js';
 
@@ -21,15 +20,6 @@ const runApp = () => {
         isValid: { status: false },
       },
       feeds: [],
-    };
-    state.shemes = {
-      urlValidationScheme: yup.object().shape({
-        rssUrl: yup.string(state.i18n.t('isNotURL'))
-          .required(state.i18n.t('isNotURL'))
-          .url(state.i18n.t('isNotURL'))
-          .trim(state.i18n.t('isNotURL'))
-          .matches(/.rss$/, state.i18n.t('isNotRssURL')),
-      }),
     };
     return state;
   })

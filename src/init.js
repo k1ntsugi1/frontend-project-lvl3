@@ -14,22 +14,21 @@ const runApp = () => {
     resolve(i18Instance);
   });
   promise.then((i18nInst) => {
-    console.log(i18nInst);
     const state = {
       i18n: i18nInst,
       resultOfValidation: {
         message: null,
         isValid: { status: false },
       },
-      addedResources: [],
+      feeds: [],
     };
     state.shemes = {
-      urlValidationScheme: yup.object({
+      urlValidationScheme: yup.object().shape({
         rssUrl: yup.string(state.i18n.t('isNotURL'))
-          .url(state.i18n.t('isNotURL'))
           .required(state.i18n.t('isNotURL'))
-          .trim(state.i18n.t('isNotURL'))
-          .matches(/.rss$/, { message: state.i18n.t('isNotRssURL') }),
+          .url(state.i18n.t('isNotURL'))
+          // .trim(state.i18n.t('isNotURL'))
+          .matches(/.rss$/, state.i18n.t('isNotRssURL')),
       }),
     };
     return state;

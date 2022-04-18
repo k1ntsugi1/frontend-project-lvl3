@@ -1,4 +1,4 @@
-const view = (status, message) => {
+const renderValidation = (status, message) => {
   try {
     document.querySelector('.btn-primary').setAttribute('disable', '');
     const columnForm = document.querySelector('[data-column-form]');
@@ -28,4 +28,4 @@ const view = (status, message) => {
   }
 };
 
-export default view;
+export default renderValidation;

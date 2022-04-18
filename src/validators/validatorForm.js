@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { setLocale } from 'yup';
 
-const validatorForm = (i18n, content) => {
+const validateForm = (i18n, content) => {
   setLocale({
     mixed: {
       default: 'field_invalid',
@@ -20,4 +20,4 @@ const validatorForm = (i18n, content) => {
   return shema.validate({ rssUrl: content });
 };
 
-export default validatorForm;
+export default validateForm;

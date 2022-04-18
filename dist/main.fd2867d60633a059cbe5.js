@@ -796,7 +796,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var boot
   \*********************/
 /***/ (() => {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (19:6)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|       i18n: i18nInst,\\n|       process: 'filling'\\n>       resultOfValidation: {\\n|         message: null,\\n|         isValid: { status: false },\");\n\n//# sourceURL=webpack://@hexlet/code/./src/init.js?");
+eval("throw new Error(\"Module parse failed: Unexpected token (20:8)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|       resultOfLoadingRss: {\\n|         resources\\n>         feeds: [],\\n|         topics: [],\\n|         process: null, // loadingRss, loadedRss\");\n\n//# sourceURL=webpack://@hexlet/code/./src/init.js?");
 
 /***/ }),
 

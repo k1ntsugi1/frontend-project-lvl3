@@ -5,7 +5,6 @@ const buildListGroupTopic = (topic) => {
   const tittleTopic = document.createElement('h3');
   tittleTopic.classList.add('h6', 'm-0');
 
-
   const underTittleTopic = document.createElement('a');
   underTittleTopic.setAttribute('href', topic.link);
   underTittleTopic.textContent = topic.tittle;

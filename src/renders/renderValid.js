@@ -1,12 +1,11 @@
 const renderValidation = (status, message) => {
   try {
-    document.querySelector('.btn-primary').setAttribute('disable', '');
     const columnForm = document.querySelector('[data-column-form]');
-    console.log(columnForm);
     const oldP = document.querySelector('.feedback');
     if (oldP) oldP.remove();
 
     const input = document.querySelector('#url-input');
+    input.value = '';
     if (input.classList.contains('is-invalid')) input.classList.remove('is-invalid');
 
     const p = document.createElement('p');
@@ -15,8 +14,6 @@ const renderValidation = (status, message) => {
     columnForm.append(p);
 
     if (status) {
-      input.value = '';
-      input.focus();
       p.classList.add('text-success');
       return;
     }

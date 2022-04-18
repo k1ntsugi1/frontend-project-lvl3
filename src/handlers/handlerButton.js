@@ -1,32 +1,46 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-param-reassign */
+
 import _ from 'lodash';
 import validateForm from '../validators/validatorForm';
-import isUniqRSSinFeeds from '../validators/validatorUniqUrlRSS';
-import handlerDataRSSPosts from './handlerDataRSSPosts.js';
+import isUniqRSSUrlinResources from '../validators/validatorUniqUrlRSS';
+import handlerLoadingRSSContent from './handlerDataRSSPosts.js';
 
-const handlerButton = (watcherValid, watcherFillingDataForRSS, i18n, input) => {
+// eslint-disable-next-line max-len
+const handlerButton = (watcherValidationRSSUrl, watcherLoadingRSSContent, watcherActivityBtn, i18n, input) => {
   const form = document.querySelector('.rss-form');
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const content = input.value;
     validateForm(i18n, content)
-      .then(({ rssUrl: resultOfValidation }) => {
-        if (!isUniqRSSinFeeds(watcherFillingDataForRSS.resources, resultOfValidation)) throw new Error(i18n.t('urlInAddedResources'));
-        watcherValid.message = i18n.t('isValid');
-        watcherValid.isValid = true;
-        console.log(watcherFillingDataForRSS.resources);
-        handlerDataRSSPosts(watcherFillingDataForRSS, resultOfValidation);
+      .then(({ rssUrl }) => {
+        if (!isUniqRSSUrlinResources(watcherLoadingRSSContent.resources, rssUrl)) throw new Error(i18n.t('isntUniqRSSUrl'));
+        watcherValidationRSSUrl.message = i18n.t('isValid');
+        watcherValidationRSSUrl.isValid = true;
+        return rssUrl;
+      })
+      .then((rssUrl) => {
+        console.log('second');
+        watcherActivityBtn.currentProcess = 'loadingRssContent';
+        return rssUrl;
+      })
+      .then((rssUrl) => {
+        handlerLoadingRSSContent(watcherLoadingRSSContent, rssUrl);
+      })
+      .then(() => {
+        watcherValidationRSSUrl.message = i18n.t('isLoaded');
+        watcherActivityBtn.currentProcess = 'fillingRssUrl';
       })
       .catch((err) => {
+        console.log(err);
         if (_.has(err, 'errors')) {
           const [error] = err.errors;
-          watcherValid.message = error;
-          watcherValid.isValid = false;
+          watcherValidationRSSUrl.message = error;
+          watcherValidationRSSUrl.isValid = false;
           return;
         }
-        watcherValid.message = err.message;
-        watcherValid.isValid = false;
+        watcherValidationRSSUrl.message = err.message;
+        watcherValidationRSSUrl.isValid = false;
       });
   });
 };

@@ -1,7 +1,7 @@
-const handlerInput = (watcherValid, input) => {
+const handlerInput = (watcherValidationRSSUrl, input) => {
   input.addEventListener('input', (e) => {
     e.preventDefault();
-    watcherValid.isValid = null;
+    watcherValidationRSSUrl.isValid = null;
   });
 };
 export default handlerInput;

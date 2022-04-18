@@ -18,8 +18,8 @@ const watcherActivityButton = (state) => {
 };
 
 const watcherLoadingRssContent = (state) => {
-  const watcher = onChange(state.resultOfLoadingRssContent, (path) => {
-    if (path === 'feeds') {
+  const watcher = onChange(state.resultOfLoadingRssContent, (path, value, previouesValue) => {
+    if (path === 'addingCounter' && value > previouesValue) {
       renderRssContent(watcher, state.i18n);
       renderFeedback(true, state.feedbackMessage);
     }
@@ -27,4 +27,7 @@ const watcherLoadingRssContent = (state) => {
   return watcher;
 };
 
-export { watcherValidationRssURL, watcherActivityButton, watcherLoadingRssContent };
+export {
+  watcherValidationRssURL, watcherActivityButton,
+  watcherLoadingRssContent,
+};

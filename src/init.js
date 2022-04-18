@@ -16,10 +16,14 @@ const runApp = () => {
     const state = {
       i18n: i18nInst,
       message: null,
+      counterHavePromisedTopics: {
+        sum: 0,
+      },
       process: {
         currentProcess: null, // fillingRssUrl, loadingRssContent
       },
       resultOfLoadingRssContent: {
+        addingCounter: 0,
         resources: [],
         feeds: [],
         topics: [],

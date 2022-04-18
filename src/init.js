@@ -19,7 +19,7 @@ const runApp = () => {
         resources: [],
         feeds: [],
         topics: [],
-        process: null, // loadingRss, loadedRss
+        process: null, // loadingRss, renderingRSS, loadedRss
       },
       resultOfValidation: {
         message: null,

@@ -1,7 +1,22 @@
+import axios from 'axios';
+import parserRSS from '../parsers/parserRss';
+
 const handlerDataRSSPosts = (watcherFillingDataForRss, resultOfValidation) => {
   watcherFillingDataForRss.process = 'loadingRss';
-  // eslint-disable-next-line max-len
-  watcherFillingDataForRss.resources.push({ id: watcherFillingDataForRss.feeds.length, value: resultOfValidation });
+
+  const id = watcherFillingDataForRss.resources.length;
+  watcherFillingDataForRss.resources.push({ id, value: resultOfValidation });
+
+  const proxy = 'https://allorigins.hexlet.app/get?';
+  axios.get(`${proxy}disableCache=true&url=${encodeURIComponent(resultOfValidation)}/`)
+    .then((response) => parserRSS(response, id))
+    .then((parsedRss) => {
+      const { feed, flow } = parsedRss;
+      watcherFillingDataForRss.feeds.push(feed);
+      watcherFillingDataForRss.feeds.push(flow);
+      watcherFillingDataForRss.process = 'renderingRSS';
+    })
+    .catch((e) => console.log(e));
 };
 
 export default handlerDataRSSPosts;

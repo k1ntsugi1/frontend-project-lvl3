@@ -12,7 +12,7 @@ const app = (state) => {
 
   handlerInput(watcherValidationRSSUrl, input);
   // eslint-disable-next-line max-len
-  handlerButton(watcherValidationRSSUrl, watcherLoadingRSSContent, watcherActivityBtn, state.i18n, input);
+  handlerButton(state, watcherValidationRSSUrl, watcherLoadingRSSContent, watcherActivityBtn, input);
 };
 
 export default app;

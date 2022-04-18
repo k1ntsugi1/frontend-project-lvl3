@@ -15,6 +15,7 @@ const runApp = () => {
   promise.then((i18nInst) => {
     const state = {
       i18n: i18nInst,
+      message: null,
       process: {
         currentProcess: null, // fillingRssUrl, loadingRssContent
       },
@@ -24,7 +25,6 @@ const runApp = () => {
         topics: [],
       },
       resultOfValidationRssUrl: {
-        message: null,
         isValid: null,
       },
     };

@@ -6,4 +6,5 @@
 <a href="https://codeclimate.com/github/k1ntsugi1/frontend-project-lvl3/test_coverage"><img src="https://api.codeclimate.com/v1/badges/376681579f70502eda39/test_coverage" /></a>
 ### Vercel:
 https://frontend-project-lvl3-k1ntsugi1.vercel.app/
-###Have to build html for feeds and flows(renderRss)
+
+###ADD statusof loading for section first

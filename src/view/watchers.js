@@ -16,10 +16,9 @@ const watcherFillingDataForRss = (state) => {
     switch (true) {
       case (path === 'process' && value !== 'renderingRSS'):
         buttonActivityRender(value);
-        // renderRssPosts(watcher.feeds);
         break;
       case (path === 'process' && value === 'renderingRSS'):
-        renderRssPosts(watcher);
+        renderRssPosts(watcher, state.i18n);
         break;
       default:
         throw new Error(`${path} something wrong in watcherFillingDataForRss`);

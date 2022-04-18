@@ -6,6 +6,8 @@ export default {
       isNotRssURL: 'Ресурс не содержит валидный RSS',
       isValid: 'RSS загружается',
       isLoaded: 'RSS успешно загружен',
+      feeds: 'Фиды',
+      flows: 'Посты',
     },
   },
 };

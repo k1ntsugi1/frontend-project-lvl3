@@ -2,6 +2,7 @@ import onChange from 'on-change';
 import renderFeedback from '../renders/renderValid.js';
 import buttonActivityRender from '../renders/buttonActivityRender.js';
 import renderRssContent from '../renders/renderRssPosts.js';
+import handlerSetTimeout from '../handlers/handlerSetTimeout.js';
 
 const watcherValidationRssURL = (state) => {
   const watcher = onChange(state.resultOfValidationRssUrl, (path, validationStatus) => {
@@ -23,6 +24,7 @@ const watcherLoadingRssContent = (state) => {
       renderRssContent(watcher, state.i18n);
       renderFeedback(true, state.feedbackMessage);
     }
+    if (path === 'addingCounter' && value === 1) handlerSetTimeout(watcher, true);
   });
   return watcher;
 };

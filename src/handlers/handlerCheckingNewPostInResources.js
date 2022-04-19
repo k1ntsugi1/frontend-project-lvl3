@@ -29,9 +29,9 @@ const handlerCheckingNewPostInResources = (watcherLoadingRSSContent) => {
       watcherLoadingRSSContent.addingCounter += 1;
       handlerSetTimeout(watcherLoadingRSSContent, true);
     }).catch((e) => {
-      console.log(e);
       watcherLoadingRSSContent.addingCounter = 0;
       handlerSetTimeout(watcherLoadingRSSContent, false);
+      throw new Error(e);
     });
 };
 

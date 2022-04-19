@@ -23,6 +23,7 @@ const runApp = () => {
         currentProcess: null, // fillingRssUrl, loadingRssContent
       },
       resultOfLoadingRssContent: {
+        currentTimerID: null,
         addingCounter: 0,
         resources: [],
         feeds: [],

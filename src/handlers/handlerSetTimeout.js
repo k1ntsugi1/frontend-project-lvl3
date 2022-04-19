@@ -1,21 +1,24 @@
+/* eslint-disable no-param-reassign */
 // eslint-disable-next-line import/no-cycle
 import handlerCheckingNewPostInResources from './handlerCheckingNewPostInResources.js';
 
-const handlerSetTimeout = (watcherLoadingRSSContent, status) => {
-  console.log('settedTimeout');
-  if (watcherLoadingRSSContent.currentTimerID) watcherLoadingRSSContent.currentTimerID = null;
+const handlerSetTimeout = (watcherLoadingRSSContent, state, status) => {
+  const timerID = watcherLoadingRSSContent.updatingTopics.currentTimerID;
+  if (timerID) clearTimeout(timerID);
+  console.log('setted');
   if (status) {
     const idCorrectTimer = setTimeout(() => {
-      handlerCheckingNewPostInResources(watcherLoadingRSSContent);
+      handlerCheckingNewPostInResources(watcherLoadingRSSContent, state);
+      watcherLoadingRSSContent.updatingTopics.currentTimerID = idCorrectTimer;
     }, 5000);
-    watcherLoadingRSSContent.currentTimerID = idCorrectTimer;
+    // eslint-disable-next-line max-len
     return;
   }
 
   const idWrongTimer = setTimeout(() => {
-    handlerCheckingNewPostInResources(watcherLoadingRSSContent);
+    handlerCheckingNewPostInResources(watcherLoadingRSSContent, state);
+    watcherLoadingRSSContent.updatingTopics.currentTimerID = idWrongTimer;
   }, 30000);
-  watcherLoadingRSSContent.currentTimerID = idWrongTimer;
 };
 
 export default handlerSetTimeout;

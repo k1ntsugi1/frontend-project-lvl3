@@ -1,22 +1,22 @@
 import axios from 'axios';
 import parserRSS from '../parsers/parserRss';
-// eslint-disable-next-line import/no-cycle
-import handlerSetTimeout from './handlerSetTimeout.js';
 
-const handlerCheckingNewPostInResources = (watcherLoadingRSSContent) => {
+const handlerCheckingNewPostInResources = (watcherLoadingRSSContent, state) => {
   const { topics: oldTopics, resources } = watcherLoadingRSSContent;
   const proxy = 'https://allorigins.hexlet.app/get?';
   const promises = resources.map((resource) => axios.get(`${proxy}disableCache=true&url=${encodeURIComponent(resource.value)}/`)
     .then((response) => parserRSS(response, resource.id)));
 
   Promise.all(promises)
+    .catch(() => {
+      state.feedbackMessage = state.i18n.t('errorNetWorkUpdating');
+      watcherLoadingRSSContent.updatingTopics.errorUpdating = true;
+    })
     .then((parsedResources) => {
-      console.log(parsedResources, 'parsedRSS');
       parsedResources.forEach((parsedRss) => {
         const { topics } = parsedRss;
         const { feed } = parsedRss;
         const { id: currentId } = feed;
-        console.log(parsedRss, 'parsedRSS');
         // eslint-disable-next-line max-len
         const oldTobicsWithCurrentId = oldTopics.filter(({ id }) => currentId === id).map(({ title }) => title);
         const newTopics = topics.filter(({ title }) => !oldTobicsWithCurrentId.includes(title));
@@ -26,12 +26,7 @@ const handlerCheckingNewPostInResources = (watcherLoadingRSSContent) => {
       });
     })
     .then(() => {
-      watcherLoadingRSSContent.addingCounter += 1;
-      handlerSetTimeout(watcherLoadingRSSContent, true);
-    }).catch((e) => {
-      watcherLoadingRSSContent.addingCounter = 0;
-      handlerSetTimeout(watcherLoadingRSSContent, false);
-      throw new Error(e);
+      watcherLoadingRSSContent.updatingTopics.errorUpdating = false;
     });
 };
 

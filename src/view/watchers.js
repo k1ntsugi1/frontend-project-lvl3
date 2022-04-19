@@ -4,6 +4,9 @@ import buttonActivityRender from '../renders/buttonActivityRender.js';
 import renderRssContent from '../renders/renderRssPosts.js';
 import handlerSetTimeout from '../handlers/handlerSetTimeout.js';
 import switchToDefaultValue from '../handlers/switchToDefaultValue.js';
+import handlerBtnsTopics from '../handlers/handlerBtnOutline.js';
+import renderModal from '../renders/renderModal.js';
+import handlerLink from '../handlers/handlerLink.js';
 
 const watcherValidationRssURL = (state) => {
   const watcher = onChange(state.resultOfValidationRssUrl, (path, validationStatus) => {
@@ -33,6 +36,7 @@ const watcherLoadingRssContent = (state) => {
         if (value === false) {
           renderRssContent(watcher, state.i18n);
           renderFeedback(true, state.feedbackMessage);
+          handlerBtnsTopics(watcher);
           switchToDefaultValue(watcher, path);
           // eslint-disable-next-line max-len
           if (watcher.updatingTopics.currentTimerID === null) handlerSetTimeout(watcher, state, true);
@@ -47,6 +51,10 @@ const watcherLoadingRssContent = (state) => {
         break;
       case ('updatingTopics.currentTimerID'):
         handlerSetTimeout(watcher, state, true);
+        break;
+      case ('uiState.viewedTopics'):
+        renderModal(watcher.uiState.viewedTopics);
+        // handlerLink();
         break;
       default:
         break;

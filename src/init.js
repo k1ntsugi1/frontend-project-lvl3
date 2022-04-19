@@ -28,6 +28,9 @@ const runApp = () => {
         resources: [],
         feeds: [],
         topics: [],
+        uiState: {
+          viewedTopics: [],
+        },
       },
       resultOfValidationRssUrl: {
         isValid: null,

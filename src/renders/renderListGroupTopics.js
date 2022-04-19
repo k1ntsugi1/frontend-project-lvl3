@@ -10,7 +10,7 @@ const buildListGroupTopic = (topic) => {
   const modalButton = document.createElement('button');
   modalButton.classList.add('btn', 'btn-outline-primary', 'btn-sm');
   modalButton.setAttribute('data-bs-toggle', 'modal');
-  modalButton.setAttribute('data-bs-target', `${topic.link}`);
+  modalButton.setAttribute('data-bs-target', `#i${topic.childrenId}`);
   modalButton.textContent = 'Просмотр';
 
   li.append(tittleTopic, modalButton);

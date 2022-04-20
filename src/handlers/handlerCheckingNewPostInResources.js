@@ -6,18 +6,21 @@ const handlerCheckingNewPostInResources = (watcherLoadingRSSContent, state) => {
   const { topics: oldTopics, resources } = watcherLoadingRSSContent;
   const proxy = 'https://allorigins.hexlet.app/get?';
 
-  const promises = resources.map((resource) => axios.get(`${proxy}disableCache=true&url=${encodeURIComponent(resource.value)}/`));
+  // eslint-disable-next-line arrow-body-style
+  const promises = resources.map((resource) => {
+    return axios.get(`${proxy}disableCache=true&url=${encodeURIComponent(resource.value)}/`)
+      .catch(() => {
+        state.feedbackMessage = state.i18n.t('updating.errors.errorNetWorkUpdating');
+        throw new Error();
+      })
+      .then((response) => parserRSS(response, resource.id))
+      .catch(() => {
+        state.feedbackMessage = state.i18n.t('updating.errors.errorResourceUpdating');
+        throw new Error();
+      });
+  });
 
   Promise.all(promises)
-    .catch(() => {
-      state.feedbackMessage = state.i18n.t('updating.errors.errorNetWorkUpdating');
-      watcherLoadingRSSContent.updatingTopics.errorUpdating = true;
-    })
-    .then((responses) => responses.map((response) => parserRSS(response, response.id)))
-    .catch(() => {
-      state.feedbackMessage = state.i18n.t('updating.errors.errorResourceUpdating');
-      watcherLoadingRSSContent.updatingTopics.errorUpdating = true;
-    })
     .then((parsedResources) => {
       parsedResources.forEach((parsedRss) => {
         const { topics, feed } = parsedRss;
@@ -34,7 +37,9 @@ const handlerCheckingNewPostInResources = (watcherLoadingRSSContent, state) => {
     .then(() => {
       watcherLoadingRSSContent.updatingTopics.errorUpdating = false;
     })
-    .catch((e) => console.log('error', e));
+    .catch(() => {
+      watcherLoadingRSSContent.updatingTopics.errorUpdating = true;
+    });
 };
 
 export default handlerCheckingNewPostInResources;

@@ -1,12 +1,12 @@
-const renderModal = (topics) => {
-  console.log(topics);
-  const viewedTopic = topics[topics.length - 1];
+const renderModal = (topic) => {
+  console.log(topic);
+  const viewedTopic = topic;
   const {
     description, link, title, childrenId,
   } = viewedTopic;
 
   const modalFade = document.querySelector('.modal');
-  modalFade.id = `i${childrenId}`;
+  modalFade.id = childrenId.slice(1);
 
   const modalTitle = document.querySelector('.modal-title');
   modalTitle.textContent = title;

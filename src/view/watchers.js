@@ -7,6 +7,8 @@ import switchToDefaultValue from '../handlers/switchToDefaultValue.js';
 import handlerBtnsTopics from '../handlers/handlerBtnOutline.js';
 import renderModal from '../renders/renderModal.js';
 import handlerLink from '../handlers/handlerLink.js';
+import renderTitle from '../renders/renderTitle.js';
+import handlerModalBtns from '../handlers/handlerModalBtns.js';
 
 const watcherValidationRssURL = (state) => {
   const watcher = onChange(state.resultOfValidationRssUrl, (path, validationStatus) => {
@@ -25,7 +27,7 @@ const watcherActivityButton = (state) => {
 
 const watcherLoadingRssContent = (state) => {
   const watcher = onChange(state.resultOfLoadingRssContent, (path, value) => {
-    console.log(path, value);
+    console.log(path, value, '11111111111111222222222222');
     switch (path) {
       case ('errorLoading'):
         console.log(watcher);
@@ -37,6 +39,7 @@ const watcherLoadingRssContent = (state) => {
           renderRssContent(watcher, state.i18n);
           renderFeedback(true, state.feedbackMessage);
           handlerBtnsTopics(watcher);
+          // handlerModalBtns();
           switchToDefaultValue(watcher, path);
           // eslint-disable-next-line max-len
           if (watcher.updatingTopics.currentTimerID === null) handlerSetTimeout(watcher, state, true);
@@ -52,9 +55,12 @@ const watcherLoadingRssContent = (state) => {
       case ('updatingTopics.currentTimerID'):
         handlerSetTimeout(watcher, state, true);
         break;
+      case ('uiState.currentModal'):
+        renderModal(value);
+        handlerLink();
+        break;
       case ('uiState.viewedTopics'):
-        renderModal(watcher.uiState.viewedTopics);
-        // handlerLink();
+        renderTitle(watcher.uiState.viewedTopics);
         break;
       default:
         break;

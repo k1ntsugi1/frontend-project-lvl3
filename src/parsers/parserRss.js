@@ -14,7 +14,7 @@ const parserRSS = (response, id) => {
         link: item.querySelector('link').textContent,
         description: item.querySelector('description').textContent,
         id,
-        childrenId,
+        childrenId: `#i${childrenId}`,
       };
       childrenId += 1;
       return top;

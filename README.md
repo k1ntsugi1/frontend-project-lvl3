@@ -7,4 +7,4 @@
 ### Vercel:
 https://frontend-project-lvl3-k1ntsugi1.vercel.app/
 
-###you have to edit parser!
+### Edit gitignore

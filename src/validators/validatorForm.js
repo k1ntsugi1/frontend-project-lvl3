@@ -17,7 +17,7 @@ const validateForm = (i18n, content) => {
       .min(1),
   }); */
 
-  const shema = yup.yup.string().url().min(1);
+  const shema = yup.string().url().min(1);
 
   return shema.validate(content);
 };

@@ -15,6 +15,7 @@ const app = (state) => {
 
   // eslint-disable-next-line max-len
   handlerOfLinkOpeningBtn();
+  // eslint-disable-next-line max-len
   handlerOfBtnFormSection(state, watcherValidationRSSUrl, watcherLoadingRSSContent, watcherActivityBtn, input);
 };
 

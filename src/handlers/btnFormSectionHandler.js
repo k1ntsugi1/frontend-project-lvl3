@@ -33,7 +33,6 @@ const handlerOfBtnFormSection = (state, watcherValidationRSSUrl, watcherLoadingR
         handlerOfLoadingRSSContent(watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state);
       })
       .catch((error) => {
-        console.log(error, 'end');
         state.feedbackMessage = error.message;
         watcherValidationRSSUrl.isValid = false;
         watcherActivityBtn.currentProcess = 'fillingRssUrl';

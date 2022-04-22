@@ -2,7 +2,6 @@ import { getUniqId } from '../handlers/additionalHandlers';
 
 const parserRSS = (response, id) => {
   try {
-    console.log(response, 'parser');
     const parser = new DOMParser();
     const data = parser.parseFromString(response.data.contents, 'text/xml');
     const feed = {
@@ -10,7 +9,7 @@ const parserRSS = (response, id) => {
       description: data.querySelector('channel description').textContent,
       id,
     };
-    // let childrenId = id;
+
     const topics = Array.from(data.querySelectorAll('item')).map((item) => {
       const top = {
         title: item.querySelector('title').textContent,
@@ -19,7 +18,6 @@ const parserRSS = (response, id) => {
         id,
         childrenId: `#i${getUniqId()}`,
       };
-      // childrenId += 1;
       return top;
     });
 

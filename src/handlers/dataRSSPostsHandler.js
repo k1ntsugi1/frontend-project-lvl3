@@ -8,7 +8,8 @@ const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn
   const id = getUniqId();
   const proxy = 'https://allorigins.hexlet.app/get?';
   console.log(rssUrl, 'rssURL');
-  axios.get(`${proxy}disableCache=true&url=${encodeURIComponent(rssUrl)}/`)
+  // axios.get(`${proxy}disableCache=true&url=${encodeURIComponent(rssUrl)}/`)
+  axios.get(`${proxy}disableCache=true&url=${rssUrl}/`)
     .catch(() => {
       throw new Error(state.i18n.t('loading.errrors.errorNetWork'));
     })

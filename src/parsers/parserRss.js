@@ -2,6 +2,7 @@ import { getUniqId } from '../handlers/additionalHandlers';
 
 const parserRSS = (response, id) => {
   try {
+    console.log(response, 'parser');
     const parser = new DOMParser();
     const data = parser.parseFromString(response.data.contents, 'text/xml');
     const feed = {

@@ -11,11 +11,14 @@ const validateForm = (i18n, content) => {
       min: i18n.t('validation.errors.errorRequared'),
     },
   });
-  const shema = yup.object().shape({
+  /* const shema = yup.object().shape({
     rssUrl: yup.string()
       .url()
       .min(1),
-  });
+  }); */
+
+  const shema = yup.yup.string().url().min(1);
+
   return shema.validate({ rssUrl: content });
 };
 

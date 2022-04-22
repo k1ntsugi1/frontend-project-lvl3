@@ -15,10 +15,11 @@ const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn
       throw new Error();
     })
     .then((response) => parserRSS(response, id))
-    /*.catch(() => {
-      state.feedbackMessage = state.i18n.t('loading.errrors.errorResource');
+    .catch((error) => {
+      const errorMessage = error.message;
+      if (errorMessage === 'errorParsing') state.feedbackMessage = state.i18n.t('loading.errrors.errorResource');
       throw new Error();
-    })*/
+    })
     .then((parsedRss) => {
       const { feed, topics } = parsedRss;
       watcherLoadingRSSContent.resources.push({ id, value: rssUrl });

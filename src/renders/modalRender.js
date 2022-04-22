@@ -1,6 +1,6 @@
-const renderModal = (viewedTopic) => {
+const renderOfCurrentModalTopic = (viewedTopic) => {
   const {
-    description, link, title, childrenId,
+    description, title, link, childrenId,
   } = viewedTopic;
 
   const modalFade = document.querySelector('.modal');
@@ -19,12 +19,6 @@ const renderModal = (viewedTopic) => {
   }
 
   btnCheck.setAttribute('data-link', link);
-
-  btnCheck.addEventListener('click', (e) => {
-    e.preventDefault();
-    const currentlink = e.target.dataset.link;
-    window.open(currentlink);
-  });
 };
 
-export default renderModal;
+export default renderOfCurrentModalTopic;

@@ -1,4 +1,4 @@
-const renderFeedback = (status, message) => {
+const renderFeedbackOfFormSetion = (status, message) => {
   try {
     const input = document.querySelector('#url-input');
     input.value = '';
@@ -26,4 +26,18 @@ const renderFeedback = (status, message) => {
   }
 };
 
-export default renderFeedback;
+const renderBtnOfFormSection = (process) => {
+  const button = document.querySelector('.btn-form');
+  switch (true) {
+    case (process === 'loadingRssContent'):
+      button.setAttribute('disabled', '');
+      break;
+    case (process === 'fillingRssUrl'):
+      button.removeAttribute('disabled');
+      break;
+    default:
+      throw new Error(`${process} something wrong in activity Btn`);
+  }
+};
+
+export { renderFeedbackOfFormSetion, renderBtnOfFormSection };

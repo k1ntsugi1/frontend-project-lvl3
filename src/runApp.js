@@ -1,3 +1,5 @@
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import i18next from 'i18next';
 import languages from './resources/languages.js';
 import app from './app.js';
@@ -48,4 +50,4 @@ const runApp = () => {
     });
 };
 
-export default runApp;
+runApp();

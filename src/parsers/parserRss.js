@@ -1,4 +1,4 @@
-import uniqId from '../handlers/getUniqId';
+import { getUniqId } from '../handlers/additionalHandlers';
 
 const parserRSS = (response, id) => {
   try {
@@ -16,7 +16,7 @@ const parserRSS = (response, id) => {
         link: item.querySelector('link').textContent,
         description: item.querySelector('description').textContent,
         id,
-        childrenId: `#i${uniqId()}`,
+        childrenId: `#i${getUniqId()}`,
       };
       // childrenId += 1;
       return top;

@@ -1,4 +1,13 @@
-const handlerBtnsTopics = (watcherLoadingRssContent) => {
+const handlerOfLinkOpeningBtn = () => {
+  const btn = document.querySelector('[data-check]');
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const currentlink = e.target.dataset.link;
+    window.open(currentlink);
+  });
+};
+
+const handlerOfmodalWindowOpeningBtns = (watcherLoadingRssContent) => {
   Array.from(document.querySelectorAll('.btn-outline-primary')).forEach((btn) => {
     btn.addEventListener('mouseover', (e) => {
       e.preventDefault();
@@ -8,6 +17,7 @@ const handlerBtnsTopics = (watcherLoadingRssContent) => {
       const currentTopic = topics.filter(({ childrenId }) => childrenId === currentId);
       [watcherLoadingRssContent.uiState.currentModalTopic] = currentTopic;
     });
+
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const { currentModalTopic } = watcherLoadingRssContent.uiState;
@@ -20,4 +30,4 @@ const handlerBtnsTopics = (watcherLoadingRssContent) => {
   });
 };
 
-export default handlerBtnsTopics;
+export { handlerOfmodalWindowOpeningBtns, handlerOfLinkOpeningBtn };

@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
-import validateForm from '../validators/validatorForm';
-import isNewRSS from '../validators/validatorUniqUrlRSS';
-import handlerLoadingRSSContent from './handlerDataRSSPosts.js';
+import validateForm from '../validators/formValidator';
+import isNewRSSResource from '../validators/newRSSResource.js';
+import handlerOfLoadingRSSContent from './dataRSSPostsHandler';
 
 // eslint-disable-next-line max-len
-const handlerButton = (state, watcherValidationRSSUrl, watcherLoadingRSSContent, watcherActivityBtn, input) => {
+const handlerOfBtnFormSection = (state, watcherValidationRSSUrl, watcherLoadingRSSContent, watcherActivityBtn, input) => {
   const form = document.querySelector('.rss-form');
 
   form.addEventListener('submit', (e) => {
@@ -20,7 +20,7 @@ const handlerButton = (state, watcherValidationRSSUrl, watcherLoadingRSSContent,
       })
       .then((rssUrl) => {
         const { resources } = watcherLoadingRSSContent;
-        if (!isNewRSS(resources, rssUrl)) throw new Error(state.i18n.t('validation.errors.errorUniqRSSUrl'));
+        if (!isNewRSSResource(resources, rssUrl)) throw new Error(state.i18n.t('validation.errors.errorUniqRSSUrl'));
         return rssUrl;
       })
       .then((rssUrl) => {
@@ -30,7 +30,7 @@ const handlerButton = (state, watcherValidationRSSUrl, watcherLoadingRSSContent,
         return rssUrl;
       })
       .then((rssUrl) => {
-        handlerLoadingRSSContent(watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state);
+        handlerOfLoadingRSSContent(watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state);
       })
       .catch((error) => {
         console.log(error, 'end');
@@ -41,4 +41,4 @@ const handlerButton = (state, watcherValidationRSSUrl, watcherLoadingRSSContent,
   });
 };
 
-export default handlerButton;
+export default handlerOfBtnFormSection;

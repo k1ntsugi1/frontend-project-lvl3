@@ -1,8 +1,7 @@
-/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import parserRSS from '../parsers/parserRss';
 
-const handlerCheckingNewPostInResources = (watcherLoadingRSSContent, state) => {
+const checkNewPostInResources = (watcherLoadingRSSContent, state) => {
   const { topics: oldTopics, resources } = watcherLoadingRSSContent;
   const proxy = 'https://allorigins.hexlet.app/get?';
 
@@ -42,4 +41,25 @@ const handlerCheckingNewPostInResources = (watcherLoadingRSSContent, state) => {
     });
 };
 
-export default handlerCheckingNewPostInResources;
+const getCurrentTimerId = (watcher) => watcher.updatingTopics.currentTimerID;
+
+const setTimer = (watcherLoadingRSSContent, state, status) => {
+  const currentTimerId = getCurrentTimerId(watcherLoadingRSSContent);
+  if (currentTimerId) clearTimeout(currentTimerId);
+
+  if (status) {
+    console.log('setted');
+    const correctTimerId = setTimeout(() => {
+      checkNewPostInResources(watcherLoadingRSSContent, state);
+      watcherLoadingRSSContent.updatingTopics.currentTimerID = correctTimerId;
+    }, 5000);
+    return;
+  }
+
+  const wrongTimerId = setTimeout(() => {
+    checkNewPostInResources(watcherLoadingRSSContent, state);
+    watcherLoadingRSSContent.updatingTopics.currentTimerID = wrongTimerId;
+  }, 30000);
+};
+
+export { setTimer, checkNewPostInResources, getCurrentTimerId };

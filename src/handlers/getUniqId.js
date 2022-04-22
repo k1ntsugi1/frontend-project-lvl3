@@ -1,3 +1,5 @@
-const uniqId = () => `f${(Math.ceil((Math.random() * 1e8))).toString(16)}`;
+import _ from 'lodash';
+
+const uniqId = () => _.uniqueId();
 
 export default uniqId;

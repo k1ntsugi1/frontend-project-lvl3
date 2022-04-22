@@ -1,14 +1,15 @@
 import * as yup from 'yup';
 import { setLocale } from 'yup';
 
-const validateForm = (i18n, content) => {
+const validateForm = (state, content) => {
+  console.log(state);
   setLocale({
     mixed: {
       default: 'field_invalid',
     },
     string: {
-      url: i18n.t('validation.errors.errorURL'),
-      min: i18n.t('validation.errors.errorRequared'),
+      url: state.i18n.t('validation.errors.errorURL'),
+      min: state.i18n.t('validation.errors.errorRequared'),
     },
   });
 

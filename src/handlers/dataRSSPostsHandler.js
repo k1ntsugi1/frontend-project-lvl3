@@ -22,7 +22,7 @@ const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn
       topics.forEach((topic) => watcherLoadingRSSContent.topics.push(topic));
       watcherLoadingRSSContent.feeds.push(feed);
 
-      state.feedbackMessage = state.i18n.t('loading.isLoaded');
+      // state.feedbackMessage = state.i18n.t('loading.isLoaded');
       watcherLoadingRSSContent.errorLoading = false;
       watcherActivityBtn.currentProcess = 'fillingRssUrl';
     })

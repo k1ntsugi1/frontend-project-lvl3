@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/k1ntsugi1/frontend-project-lvl3/workflows/hexlet-check/badge.svg)](https://github.com/k1ntsugi1/frontend-project-lvl3/actions)",
   "type": "module",
-  "main": "src/index.js",
+  "main": "src/runApp.js",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
@@ -41,7 +41,6 @@
     "i18next": "^21.6.16",
     "lodash": "^4.17.21",
     "on-change": "^4.0.0",
-    "uuidv4": "^6.2.13",
     "yup": "^0.32.11"
   }
 }

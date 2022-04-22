@@ -49,4 +49,4 @@ const runApp = () => {
     });
 };
 
-export default runApp;
+export default runApp();

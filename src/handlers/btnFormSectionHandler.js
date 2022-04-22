@@ -23,8 +23,8 @@ const handlerOfBtnFormSection = (state, watcherValidationRSSUrl, watcherLoadingR
       })
       .then((rssUrl) => {
         watcherActivityBtn.currentProcess = 'loadingRssContent';
-        state.feedbackMessage = state.i18n.t('validation.isValid');
-        watcherValidationRSSUrl.isValid = true;
+        // state.feedbackMessage = state.i18n.t('validation.isValid');
+        // watcherValidationRSSUrl.isValid = true;
         // watcherActivityBtn.currentProcess = 'loadingRssContent';
         return rssUrl;
       })

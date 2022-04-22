@@ -32,7 +32,7 @@ const watcherLoadingRssContent = (state) => {
         }
         if (value === false) {
           renderRssContent(watcher, state.i18n);
-          // renderFeedbackOfFormSetion(true, state.feedbackMessage);
+          renderFeedbackOfFormSetion(true, state.feedbackMessage);
           handlerOfmodalWindowOpeningBtns(watcher);
           switchToDefaultValue(watcher, path);
           if (!getCurrentTimerId(watcher)) setTimer(watcher, state, true);
@@ -41,12 +41,12 @@ const watcherLoadingRssContent = (state) => {
       case ('updatingTopics.errorUpdating'):
         console.log(watcher);
         if (value === true) {
-          renderFeedbackOfFormSetion(false, state.feedbackMessage);
+          // renderFeedbackOfFormSetion(false, state.feedbackMessage);
           setTimer(watcher, state, false);
           switchToDefaultValue(watcher, path);
         }
         if (value === false) {
-          // renderFeedbackOfFormSetion(true, state.feedbackMessage);
+          renderFeedbackOfFormSetion(true, state.feedbackMessage);
           renderRssContent(watcher, state.i18n);
           handlerOfmodalWindowOpeningBtns(watcher);
           switchToDefaultValue(watcher.updatingTopics, 'errorUpdating');

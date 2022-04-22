@@ -12,7 +12,7 @@ export default {
       loading: {
         errrors: {
           errorNetWork: 'Ошибка сети',
-          errorResource: 'RSS уже существует', // Ресурс не содержит валидный RSS
+          errorResource: 'Ресурс не содержит валидный RSS', // Ресурс не содержит валидный RSS
         },
         isLoaded: 'RSS успешно загружен',
       },

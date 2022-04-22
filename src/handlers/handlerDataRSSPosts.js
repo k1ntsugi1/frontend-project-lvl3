@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
 import parserRSS from '../parsers/parserRss';
-import uuid from './getUniqId';
+import uniqId from './getUniqId';
 
 const handlerLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state) => {
-  const id = uuid();
+  const id = uniqId();
 
   const proxy = 'https://allorigins.hexlet.app/get?';
 

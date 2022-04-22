@@ -6,10 +6,13 @@ import { getUniqId } from './additionalHandlers';
 // eslint-disable-next-line max-len
 const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state) => {
   const id = getUniqId();
-  const proxy = 'https://allorigins.hexlet.app/get';
+  // const proxy = 'https://allorigins.hexlet.app/get';
   console.log(rssUrl, 'rssURL');
+  const newUrl = new URL(`https://allorigins.hexlet.app/get?url=${rssUrl}`);
+  newUrl.searchParams.set('disableCache', true);
 
-  axios.get(`${proxy}?disableCache=true&url=${encodeURIComponent(rssUrl)}/`)
+  // axios.get(`${proxy}?disableCache=true&url=${encodeURIComponent(rssUrl)}/`)
+  axios.get(newUrl.toString())
     .catch(() => {
       state.feedbackMessage = state.i18n.t('loading.errrors.errorNetWork');
       throw new Error();

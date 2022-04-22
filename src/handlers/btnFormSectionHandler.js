@@ -11,11 +11,9 @@ const handlerOfBtnFormSection = (state, watcherValidationRSSUrl, watcherLoadingR
     e.preventDefault();
     const content = input.value;
 
-    validateForm(state, content)
+    validateForm(state.i18n, content)
       .catch(({ errors }) => { // Парсер ошибки
-        console.log(JSON.stringify(errors, null, 5));
         const [error] = errors;
-        console.log(error);
         throw new Error(error);
       })
       .then((rssUrl) => {

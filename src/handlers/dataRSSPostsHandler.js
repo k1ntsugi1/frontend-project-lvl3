@@ -3,6 +3,7 @@ import axios from 'axios';
 import parserRSS from '../parsers/parserRss';
 import { getUniqId } from './additionalHandlers';
 
+// eslint-disable-next-line max-len
 const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state) => {
   const id = getUniqId();
 
@@ -23,9 +24,8 @@ const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn
       topics.forEach((topic) => watcherLoadingRSSContent.topics.push(topic));
       watcherLoadingRSSContent.feeds.push(feed);
 
-      state.feedbackMessage = state.i18n.t('loading.isLoaded');
+      // state.feedbackMessage = state.i18n.t('loading.isLoaded');
       watcherLoadingRSSContent.errorLoading = false;
-
       watcherActivityBtn.currentProcess = 'fillingRssUrl';
     })
     .catch((error) => {

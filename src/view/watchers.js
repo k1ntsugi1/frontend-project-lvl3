@@ -32,7 +32,7 @@ const watcherLoadingRssContent = (state) => {
         }
         if (value === false) {
           renderRssContent(watcher, state.i18n);
-          renderFeedbackOfFormSetion(true, state.feedbackMessage);
+          // renderFeedbackOfFormSetion(true, state.feedbackMessage);
           handlerOfmodalWindowOpeningBtns(watcher);
           switchToDefaultValue(watcher, path);
           if (!getCurrentTimerId(watcher)) setTimer(watcher, state, true);

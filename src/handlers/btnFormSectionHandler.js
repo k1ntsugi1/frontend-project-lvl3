@@ -21,11 +21,11 @@ const handlerOfBtnFormSection = (state, watcherValidationRSSUrl, watcherLoadingR
         if (!isNewRSSResource(resources, rssUrl)) throw new Error(state.i18n.t('validation.errors.errorUniqRSSUrl'));
         return rssUrl;
       })
-      .then(() => {
+      .then((rssUrl) => {
         state.feedbackMessage = state.i18n.t('validation.isValid');
         watcherValidationRSSUrl.isValid = true;
         // watcherActivityBtn.currentProcess = 'loadingRssContent';
-        // return rssUrl;
+        return rssUrl;
       })
       .then((rssUrl) => {
         watcherActivityBtn.currentProcess = 'loadingRssContent';

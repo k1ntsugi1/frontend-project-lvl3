@@ -31,7 +31,7 @@ const watcherLoadingRssContent = (state) => {
           switchToDefaultValue(watcher, path);
         }
         if (value === false) {
-          // renderRssContent(watcher, state.i18n);
+          renderRssContent(watcher, state.i18n);
           renderFeedbackOfFormSetion(true, state.feedbackMessage);
           handlerOfmodalWindowOpeningBtns(watcher);
           switchToDefaultValue(watcher, path);
@@ -46,7 +46,7 @@ const watcherLoadingRssContent = (state) => {
           switchToDefaultValue(watcher, path);
         }
         if (value === false) {
-          // renderFeedback(true, state.feedbackMessage);
+          renderFeedbackOfFormSetion(true, state.feedbackMessage);
           renderRssContent(watcher, state.i18n);
           handlerOfmodalWindowOpeningBtns(watcher);
           switchToDefaultValue(watcher.updatingTopics, 'errorUpdating');

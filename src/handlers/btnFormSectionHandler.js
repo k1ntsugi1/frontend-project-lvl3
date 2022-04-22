@@ -23,7 +23,8 @@ const handlerOfBtnFormSection = (state, watcherValidationRSSUrl, watcherLoadingR
       })
       .then((rssUrl) => {
         watcherActivityBtn.currentProcess = 'loadingRssContent';
-        handlerOfLoadingRSSContent(watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state);
+        // eslint-disable-next-line max-len
+        Promise.all([handlerOfLoadingRSSContent(watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state)]);
       })
       .then(() => {
         state.feedbackMessage = state.i18n.t('validation.isValid');

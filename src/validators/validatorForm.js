@@ -19,7 +19,7 @@ const validateForm = (i18n, content) => {
 
   const shema = yup.yup.string().url().min(1);
 
-  return shema.validate({ rssUrl: content });
+  return shema.validate(content);
 };
 
 export default validateForm;

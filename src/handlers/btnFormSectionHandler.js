@@ -24,13 +24,14 @@ const handlerOfBtnFormSection = (state, watcherValidationRSSUrl, watcherLoadingR
         return rssUrl;
       })
       .then((rssUrl) => {
-        // state.feedbackMessage = state.i18n.t('validation.isValid');
-        // watcherValidationRSSUrl.isValid = true;
         watcherActivityBtn.currentProcess = 'loadingRssContent';
-        return rssUrl;
-      })
-      .then((rssUrl) => {
         handlerOfLoadingRSSContent(watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state);
+      })
+      .then(() => {
+        state.feedbackMessage = state.i18n.t('validation.isValid');
+        watcherValidationRSSUrl.isValid = true;
+        // watcherActivityBtn.currentProcess = 'loadingRssContent';
+        // return rssUrl;
       })
       .catch((error) => {
         console.log(error, 'end');

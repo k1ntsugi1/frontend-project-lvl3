@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import parserRSS from '../parsers/parserRss';
 import { getUniqId } from './additionalHandlers';

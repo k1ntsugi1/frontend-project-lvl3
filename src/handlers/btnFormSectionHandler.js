@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import validateForm from '../validators/formValidator';
 import isNewRSSResource from '../validators/newRSSResource.js';
 import handlerOfLoadingRSSContent from './dataRSSPostsHandler';

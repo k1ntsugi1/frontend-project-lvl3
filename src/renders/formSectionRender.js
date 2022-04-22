@@ -1,7 +1,7 @@
 const renderFeedbackOfFormSetion = (status, message) => {
   try {
     const input = document.querySelector('#url-input');
-    // input.value = '';
+    input.value = '';
 
     const columnForm = document.querySelector('div[data-head-content]');
     const oldP = document.querySelector('.feedback');

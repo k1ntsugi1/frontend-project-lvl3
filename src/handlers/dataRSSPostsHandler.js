@@ -7,7 +7,7 @@ import { getUniqId } from './additionalHandlers';
 const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state) => {
   const id = getUniqId();
   const proxy = 'https://allorigins.hexlet.app/get?';
-
+  console.log(rssUrl, 'rssURL');
   axios.get(`${proxy}disableCache=true&url=${encodeURIComponent(rssUrl)}/`)
     .catch(() => {
       throw new Error(state.i18n.t('loading.errrors.errorNetWork'));
@@ -22,7 +22,7 @@ const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn
       topics.forEach((topic) => watcherLoadingRSSContent.topics.push(topic));
       watcherLoadingRSSContent.feeds.push(feed);
 
-      state.feedbackMessage = state.i18n.t('loading.isLoaded');
+      // state.feedbackMessage = state.i18n.t('loading.isLoaded');
       watcherLoadingRSSContent.errorLoading = false;
       watcherActivityBtn.currentProcess = 'fillingRssUrl';
     })

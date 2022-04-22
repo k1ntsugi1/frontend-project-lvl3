@@ -15,6 +15,7 @@ const handlerButton = (state, watcherValidationRSSUrl, watcherLoadingRSSContent,
       .catch(({ errors }) => { // Парсер ошибки
         console.log(JSON.stringify(errors, null, 5));
         const [error] = errors;
+        console.log(error);
         throw new Error(error);
       })
       .then(({ rssUrl }) => {
@@ -32,6 +33,7 @@ const handlerButton = (state, watcherValidationRSSUrl, watcherLoadingRSSContent,
         handlerLoadingRSSContent(watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state);
       })
       .catch((error) => {
+        console.log(error, 'end');
         state.feedbackMessage = error.message;
         watcherValidationRSSUrl.isValid = false;
         watcherActivityBtn.currentProcess = 'fillingRssUrl';

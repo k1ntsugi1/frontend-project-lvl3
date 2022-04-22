@@ -14,8 +14,7 @@ const validateForm = (i18n, content) => {
   const shema = yup.object().shape({
     rssUrl: yup.string()
       .required()
-      .url()
-      .trim(),
+      .url();
   });
   return shema.validate({ rssUrl: content });
 };

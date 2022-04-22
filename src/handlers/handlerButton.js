@@ -18,7 +18,7 @@ const handlerButton = (state, watcherValidationRSSUrl, watcherLoadingRSSContent,
         console.log(error);
         throw new Error(error);
       })
-      .then(({ rssUrl }) => {
+      .then((rssUrl) => {
         const { resources } = watcherLoadingRSSContent;
         if (!isNewRSS(resources, rssUrl)) throw new Error(state.i18n.t('validation.errors.errorUniqRSSUrl'));
         return rssUrl;

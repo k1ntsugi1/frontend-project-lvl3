@@ -3,7 +3,7 @@
 **Maintainability Badge:**
 [![Maintainability](https://api.codeclimate.com/v1/badges/376681579f70502eda39/maintainability)](https://codeclimate.com/github/k1ntsugi1/frontend-project-lvl3/maintainability)
 
-[**Vercel**](https://frontend-project-lvl3-k1ntsugi1.vercel.app/)
+[**Vercel**](https://frontend-project-lvl3-n7zy8hry3-k1ntsugi1.vercel.app)
 
 **RSS** – специализированный формат, предназначенный для описания лент новостей, анонсов статей и других материалов. Это наиболее простой способ для сайтов (обычно, блогов) дать возможность пользователям подписываться на изменения.
 

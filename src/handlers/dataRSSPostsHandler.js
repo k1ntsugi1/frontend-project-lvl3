@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
-import parserRSS from '../parsers/parserRss';
-import { getUniqId } from './additionalHandlers';
+import parserRSS from '../parsers/parserRss.js';
+import { getUniqId } from './additionalHandlers.js';
 
 // eslint-disable-next-line max-len
 const handlerOfLoadingRSSContent = (watcherLoadingRSSContent, watcherActivityBtn, rssUrl, state) => {

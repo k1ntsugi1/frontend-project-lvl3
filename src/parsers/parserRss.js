@@ -1,4 +1,4 @@
-import { getUniqId } from '../handlers/additionalHandlers';
+import { getUniqId } from '../handlers/additionalHandlers.js';
 
 const parserRSS = (response, id) => {
   try {

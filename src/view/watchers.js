@@ -1,7 +1,7 @@
 import onChange from 'on-change';
 
 import { renderFeedbackOfFormSetion, renderBtnOfFormSection } from '../renders/formSectionRender.js';
-import { renderRssContent, renderTitleOfViewedTopics } from '../renders/responseSectionRender';
+import { renderRssContent, renderTitleOfViewedTopics } from '../renders/responseSectionRender.js';
 import renderOfCurrentModalTopic from '../renders/modalRender.js';
 
 import { setTimer, getCurrentTimerId } from '../handlers/updateHandlers.js';

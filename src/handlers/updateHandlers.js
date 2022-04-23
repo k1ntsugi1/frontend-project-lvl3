@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
-import parserRSS from '../parsers/parserRss';
+import parserRSS from '../parsers/parserRss.js';
 
 const checkNewPostInResources = (watcherLoadingRSSContent, state) => {
   const { topics: oldTopics, resources } = watcherLoadingRSSContent;

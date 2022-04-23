@@ -4,7 +4,7 @@ import { handlerOfLinkOpeningBtn } from './handlers/modalHandlers.js';
 import {
   watcherValidationRssURL, watcherActivityButton,
   watcherLoadingRssContent,
-} from './view/watchers';
+} from './view/watchers.js';
 
 const app = (state) => {
   const input = document.querySelector('#url-input');
